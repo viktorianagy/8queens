@@ -1,0 +1,16 @@
+8Queens
+=======
+(C) 2021, Nagy Viktória, viki.nagy.98@gmail.com
+-------
+
+We look for solutions when placing eight chess queens on an 8×8 chessboard so
+that no two queens threaten each other.
+Future plan: Generalisation of the problem for an n×k chessboard and other pieces.
+
+-------
+
+Input:
+None
+
+Output:
+All of the solutions.
