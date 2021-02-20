@@ -25,6 +25,7 @@ def isOK(r, c, state):
             return False
     return True
 
+# Find solutions
 solutions = []
 
 queens = [-1, -1, -1, -1, -1, -1, -1, -1]
@@ -47,8 +48,35 @@ while r < 8 and r > -1:
         solutions.append(queens.copy())
         queens[r - 1] = -1
         r = r - 2
-    
-num_of_solutions = len(solutions)
+
+# Test solutions
+errors = []
+# Test1 - testing every raw in all solutions
 for i, solution in enumerate(solutions):
-    print("{}/{}".format((i + 1), num_of_solutions))
-    show(solution)
+    for r, c in enumerate(solutions[i]):
+        if c < 0 or c > 7:
+            errors.append((1, i, r))
+
+# Test2 - testing every queen in all solutions
+if len(errors) == 0:
+    for i, solution in enumerate(solutions):
+        for R, C in enumerate(solutions[i]):
+            for r, c in enumerate(solutions[i]):
+                if R == r:
+                    continue
+                if C == c:
+                    errors.append((2, i, r))
+                if abs(C - c) == abs(R - r):
+                    errors.append((2, i, r))
+
+# Show solution
+if len(errors) == 0:
+    num_of_solutions = len(solutions)
+    for i, solution in enumerate(solutions):
+        print("{}/{}".format((i + 1), num_of_solutions))
+        show(solution)
+else:
+    print("Something went wrong!")
+    print("(Test case, solution, row of solution)")
+    for i, error in enumerate(errors):
+        print(error)
