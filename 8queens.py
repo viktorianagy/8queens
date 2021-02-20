@@ -28,7 +28,6 @@ def isOK(r, c, state):
 solutions = []
 
 queens = [-1, -1, -1, -1, -1, -1, -1, -1]
-
 r = 0
 while r < 8 and r > -1:
     r_ok = False
@@ -43,8 +42,12 @@ while r < 8 and r > -1:
         r = r - 1
     else:
         r = r + 1
-solutions.append(queens.copy())
 
+    if r == 8:
+        solutions.append(queens.copy())
+        queens[r - 1] = -1
+        r = r - 2
+    
 num_of_solutions = len(solutions)
 for i, solution in enumerate(solutions):
     print("{}/{}".format((i + 1), num_of_solutions))
