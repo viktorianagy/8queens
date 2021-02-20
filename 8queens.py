@@ -25,20 +25,18 @@ def isOK(r, c, state):
             return False
     return True
 
-queens = [0, -1, -1, -1, -1, -1, -1, -1]
+queens = [-1, -1, -1, -1, -1, -1, -1, -1]
 
 r = 0
 while r < 8 and r > -1:
     r_ok = False
     for c in range(queens[r] + 1, 8):
         if isOK(r, c, queens):
-            print(r, c)
             queens[r] = c
             r_ok = True
             break
 
     if not r_ok:
-        print('visszalép', r)
         queens[r] = -1
         r = r - 2
     r = r + 1
